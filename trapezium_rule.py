@@ -8,7 +8,11 @@
 
 def get_order(): #takes order input and checks its valid
     order = input("Input the order of your polynomial : ")
-    return check_order(order)
+    order = check_order(order)
+    while not order[0]: #while the order is invalid
+        print("Polynomial order must be an int greater than 2.")
+        order = get_order() #gets order again
+    return order[1] #gets rid of the error message flag and returns
 
 def check_order(num): #function that checks that an input is a number and greater than 2
     try:
@@ -60,8 +64,8 @@ def get_coefficient(order_of_x):  #param must be int, validated by parent functi
         
     return float(coefficient)
 
-def get_coefficients(order):
-    coefficients = []
+def get_coefficients(order): #order is known to be an int, validated by check_order in main 
+    coefficients = [] #empty list to store coefficient terms
     for i in range (order, -1, -1): #loops through each x term one by one
         coefficients.append(get_coefficient(i))
     return coefficients
@@ -70,13 +74,10 @@ def get_coefficients(order):
 def main(): #main loop
     
     order = get_order() #get polynomial order and check valid
-    while not order[0]: #while the order is invalid
-        print("Polynomial order must be an int greater than 2.")
-        order = get_order() #gets order again
-    order = order[1] #gets rid of the error message flag
+ 
+    coefficients = get_coefficients(order)
     
-    print (get_coefficients(order))
-    
+    print (coefficients)
 
 if __name__ == "__main__":
     main()
