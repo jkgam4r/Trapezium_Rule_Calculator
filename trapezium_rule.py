@@ -77,7 +77,7 @@ def main(): #main loop
  
     coefficients = get_coefficients(order)
     
-    print (coefficients)
+    
 
 if __name__ == "__main__":
     main()
