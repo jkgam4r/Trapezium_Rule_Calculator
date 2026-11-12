@@ -25,24 +25,22 @@ def check_order(num): #function that checks that an input is a number and greate
 #that way the input message can vary
 
 
-def get_coefficient(order_of_x):  #param must be int
-    input_messages = [f"Input value for coefficent of x^{order_of_x}, term : ",
-                      "Input value for coefficient of x term : ",
-                      "Input value for constant term : "]
+def get_coefficient(order_of_x):  #param must be int, validated by parent functions
     
-    if order_of_x >= 2:
-        input_message = input_messages[0]
-    elif order_of_x == 1:
-        input_message = input_messages[1] #figures out which input message to use
-    else:
-        input_message = input_messages[2]
-    
-    valid_coefficient = False #loop flag for validating input
-    
-    while not valid_coefficient: #loop until the input is valid
-        coefficient = input(input_message)
-        valid_coefficient = validate_input_coefficient(coefficient) #func returns true or false whether the input is valid, if true then the loop will end
+    def get_input_message(order): #func that takes order of x and figures out which input message to display to user
+            
+        input_messages = [f"Input value for coefficent of x^{order}, term : ", #options of input messages
+            "Input value for coefficient of x term : ",
+            "Input value for constant term : "]
         
+        if order >= 2:
+            input_message = input_messages[0]
+        elif order == 1:
+            input_message = input_messages[1] #figures out which input message to use
+        else:
+            input_message = input_messages[2]
+            
+        return input_message
     
     def validate_input_coefficient(input_val): #func that returns true or false based on whether an input can be converted to a float
         try:
@@ -50,13 +48,17 @@ def get_coefficient(order_of_x):  #param must be int
             return True
         except:
             return False
+    
+    #function recursivley takes inputs until input is valid, then returning it
+    input_message = get_input_message(order_of_x)
+    
+    valid_coefficient = False #loop flag for validating input
+    
+    while not valid_coefficient: #loop until the input is valid
+        coefficient = input(input_message)
+        valid_coefficient = validate_input_coefficient(coefficient) #func returns true or false whether the input is valid, if true then the loop will end
         
     return float(coefficient)
-        
-    
-        
-    
-    
 
 def main(): #main loop
     
