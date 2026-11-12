@@ -83,7 +83,20 @@ def get_trapeziums(): #function to take input of number of trapeziums
             print ("Input value must be an whole number greater than 0.")
     
     
-    
+def get_range(): #func must validate a and b, both floats with b > a
+ 
+    while True:
+        a = input("Input bottom/starting range for definite integration")
+        b = input("Input top/ending range for definite integration")
+        try:
+            a = float(a)
+            b = float(b) #checks both values are floats
+            if b > a: #and that b is greater than a
+                return (a, b)
+            else:
+                print("The top value must be greater than the bottom value")
+        except:
+            print("Both input values must be numbers : eg 1.1, -3, 5.6")
     
     
 
@@ -100,11 +113,14 @@ def main(): #main loop
     
     order = get_order() #get polynomial order and check valid
  
-    coefficients = get_coefficients(order)
+    coefficients = get_coefficients(order) #list of coefficients of polynomial
     
-    trapeziums = get_trapeziums()
+    trapeziums = get_trapeziums() #int representing number of trapeziums
     
-    print (coefficients, trapeziums)
+    range = get_range()
+    
+    height = (range[1] - range[0]) / trapeziums
 
+    print (height)
 if __name__ == "__main__":
     main()
