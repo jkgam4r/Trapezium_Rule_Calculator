@@ -109,29 +109,15 @@ def get_x_vals(trapeziumsVal, rangeVal): #function that takes the number of trap
         
     return x_vals
 
-# def get_y_vals(x_values_lst, coefficients_lst):
-#     order = len(coefficients_lst)-1
-#     y_values = []
-#     for x in x_values_lst:
-#         for coefficient in coefficients_lst:
-#             y_val = 0
-#             for power in range(order, -1, -1):
-#                 yval+=(coefficient * (x**power))
-#         y_values.append(y_val)
-#     return y_values
-                
-
 
 def calculate_y_fx(formula, xval):
-    value = 0
-    order = len(formula) - 1
-    for i in range (0, order):
-        value += (formula[i] * (xval**(order-i)))
-        print (value)
-    value += formula[order]
+    value = 0 #store temp y
+    order = len(formula) - 1 #get top x order
+    for i in range (0, order): #loop through all x terms
+        value += (formula[i] * (xval**(order-i))) #working!
+    value += formula[order] #add constant
     return value
 
-print (calculate_y_fx([1,2,4,8], 2))
 
 def main(): #main loop
     
