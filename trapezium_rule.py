@@ -98,7 +98,16 @@ def get_range(): #func must validate a and b, both floats with b > a
         except:
             print("Both input values must be numbers : eg 1.1, -3, 5.6")
     
-    
+def get_x_vals(trapeziumsVal, rangeVal): #function that takes the number of trapeziums and range and returns a list of x values
+    height = (rangeVal[1] - rangeVal[0]) / trapeziumsVal
+    n = trapeziumsVal + 1
+      
+    x_vals = []
+    for widths in range (0, n):
+        x_vals.append(rangeVal[0] + (widths*height)) #starting point + additional per point
+        #height*width represents as you go through each point, 1 additional width is added on the x value
+        
+    return x_vals
 
 def main(): #main loop
     
@@ -117,10 +126,12 @@ def main(): #main loop
     
     trapeziums = get_trapeziums() #int representing number of trapeziums
     
-    range = get_range()
+    rangeAB= get_range() #gets tuple of a, b floats
     
-    height = (range[1] - range[0]) / trapeziums
-
-    print (height)
+    height = (rangeAB[1] - rangeAB[0]) / trapeziums #height between each x value
+    
+    print (get_x_vals(trapeziums, rangeAB))
+    
+    
 if __name__ == "__main__":
     main()
