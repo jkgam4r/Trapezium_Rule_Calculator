@@ -109,6 +109,18 @@ def get_x_vals(trapeziumsVal, rangeVal): #function that takes the number of trap
         
     return x_vals
 
+# def get_y_vals(x_values_lst, coefficients_lst):
+#     order = len(coefficients_lst)-1
+#     y_values = []
+#     for x in x_values_lst:
+#         for coefficient in coefficients_lst:
+#             y_val = 0
+#             for power in range(order, -1, -1):
+#                 yval+=(coefficient * (x**power))
+#         y_values.append(y_val)
+#     return y_values
+                
+
 def main(): #main loop
     
     print ("""
@@ -130,8 +142,9 @@ def main(): #main loop
     
     height = (rangeAB[1] - rangeAB[0]) / trapeziums #height between each x value
     
-    print (get_x_vals(trapeziums, rangeAB))
+    x_vals = get_x_vals(trapeziums, rangeAB) #points that trapeziums are made
     
+
     
 if __name__ == "__main__":
     main()
