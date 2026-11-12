@@ -6,7 +6,6 @@ def test_get_coefficients_quadratic_valid(monkeypatch):
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
     assert get_coefficients(2) == [1.0, 2.0, 4.0]
     
-    
 def test_get_coefficients_cubic_valid(monkeypatch):
     inputs = iter([1, 2, 4, 5.345456])
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
