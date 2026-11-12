@@ -1,10 +1,12 @@
-from trapezium_rule import check_order, get_coefficient
+from trapezium_rule import check_order, get_coefficient, get_coefficients
 
 def test_check_order_valid():
     assert check_order(5) == [True, 5]
     
 def test_check_order_invalid_str():
     assert check_order('s') == [False, 's']
+    
+###########################################################
     
 def test_get_coefficient_valid(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda _: 5)
@@ -33,3 +35,9 @@ def test_get_coefficient_linear_invalid(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda _: next(inputs)) #inputs series of input requests when prompted
     assert get_coefficient(1) == 5.3
     
+#############################################################
+
+def test_get_coefficients_quadratic_valid(monkeypatch):
+    inputs = iter([1, 2, 4])
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    assert get_coefficients(2) == [1.0, 2.0, 4.0]
