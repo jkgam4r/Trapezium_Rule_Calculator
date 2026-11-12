@@ -121,6 +121,13 @@ def get_x_vals(trapeziumsVal, rangeVal): #function that takes the number of trap
 #     return y_values
                 
 
+
+def calculate_y_fx(formula, xval):
+    value = 0
+    order = len(formula) - 1
+    for i in range (0, order+1):
+        pass
+
 def main(): #main loop
     
     print ("""
