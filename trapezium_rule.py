@@ -20,7 +20,11 @@ def check_order(num): #function that checks that an input is a number and greate
         return [False, num] #returns a list, bool represents valid or not
 
 def main():
-    print() #placeholder
+    order = get_order()
+    while not order[0]: #while the order is invalid
+        print("Polynomial order must be an int greater than 2.")
+        order = get_order()
+    print(order[1])
 
 if __name__ == "__main__":
     main()
