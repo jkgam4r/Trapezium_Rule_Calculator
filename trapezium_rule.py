@@ -70,14 +70,41 @@ def get_coefficients(order): #order is known to be an int, validated by check_or
         coefficients.append(get_coefficient(i))
     return coefficients
 
+def get_trapeziums(): #function to take input of number of trapeziums
+
+    while True: #loop until input value valid
+        num = input("How many trapeziums should be used to compute the area? : ")
+        try: #if the number is an int that is greater than 0 then return it otherwise loop with error message
+            num = int(num)
+            if num >= 1:
+                return num
+            raise Exception
+        except:
+            print ("Input value must be an whole number greater than 0.")
+    
+    
+    
+    
+    
 
 def main(): #main loop
+    
+    print ("""
+               --*** INTEGRATION CALCULATOR ***--
+           
+           Program uses trapezium rule to find the area 
+                under a curve between 2 points
+                
+                
+                """)
     
     order = get_order() #get polynomial order and check valid
  
     coefficients = get_coefficients(order)
     
+    trapeziums = get_trapeziums()
     
+    print (coefficients, trapeziums)
 
 if __name__ == "__main__":
     main()
