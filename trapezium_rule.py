@@ -6,3 +6,21 @@
 
 #firstly getting the order - break into get and check order function.
 
+def get_order():
+    order = input("Input the order of your polynomial : ")
+    return check_order(order)
+
+def check_order(num): #function that checks that an input is a number and greater than 2
+    try:
+        num = int(num)
+        if num >= 2:
+            return [True, num]
+        raise Exception
+    except:
+        return [False, num] #returns a list, bool represents valid or not
+
+def main():
+    print() #placeholder
+
+if __name__ == "__main__":
+    main()
