@@ -60,6 +60,13 @@ def get_coefficient(order_of_x):  #param must be int, validated by parent functi
         
     return float(coefficient)
 
+def get_coefficients(order):
+    coefficients = []
+    for i in range (order, -1, -1): #loops through each x term one by one
+        coefficients.append(get_coefficient(i))
+    return coefficients
+
+
 def main(): #main loop
     
     order = get_order() #get polynomial order and check valid
@@ -68,6 +75,7 @@ def main(): #main loop
         order = get_order() #gets order again
     order = order[1] #gets rid of the error message flag
     
+    print (get_coefficients(order))
     
 
 if __name__ == "__main__":
