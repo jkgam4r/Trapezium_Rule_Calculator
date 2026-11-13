@@ -3,7 +3,8 @@ def get_order(): #takes order input and checks its valid
     order = check_order(order)
     while not order[0]: #while the order is invalid
         print("Polynomial order must be an int greater than 2.")
-        order = get_order() #gets order again
+        order = input("Input the order of your polynomial : ")
+        order = check_order(order)
     return order[1] #gets rid of the error message flag and returns
 
 def check_order(num): #function that checks that an input is a number and greater than 2
