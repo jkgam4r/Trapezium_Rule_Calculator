@@ -1,11 +1,3 @@
-#some main steps must be established
-#the code will take the order of polynomial first
-#then take input one by one for each polynomail coefficient
-#will then take the number of trapeziums required as an input
-#will then use the trapezium rule formula alongside the acquired data to compute the area and return it
-
-#firstly getting the order - break into get and check order function.
-
 def get_order(): #takes order input and checks its valid
     order = input("Input the order of your polynomial : ")
     order = check_order(order)
@@ -23,12 +15,6 @@ def check_order(num): #function that checks that an input is a number and greate
     except:
         return [False, num] #returns a list, bool represents valid or not
     
-    
-#this will be a subfunction of get_coefficients, will be called 'order' number of times
-#takes order of x as input so it knows which value it is going to be recieving, 
-#that way the input message can vary
-
-
 def get_coefficient(order_of_x):  #param must be int, validated by parent functions
     
     def get_input_message(order): #func that takes order of x and figures out which input message to display to user
@@ -81,8 +67,7 @@ def get_trapeziums(): #function to take input of number of trapeziums
             raise Exception
         except:
             print ("Input value must be an whole number greater than 0.")
-    
-    
+   
 def get_range(): #func must validate a and b, both floats with b > a
  
     while True:
@@ -117,7 +102,7 @@ def calculate_y_fx(formula, xval): #takes polynomial in of ax^2 + bx + c as [a, 
     value += formula[order] #add constant
     return value
 
-def get_y_vals(xvals, coefficients):
+def get_y_vals(xvals, coefficients): #loops through each value calculating corresponding y val
     
     yvals = []
     for x in xvals:
@@ -125,7 +110,7 @@ def get_y_vals(xvals, coefficients):
         
     return yvals
     
-def get_area(yvals, height):
+def get_area(yvals, height): #implements standard rule for integration via trapeziums
     area = 0
     area += (yvals[0] + yvals[-1]) #sum of first and last value
     del yvals[0]
@@ -136,9 +121,6 @@ def get_area(yvals, height):
     area = area * 0.5 * height
     
     return area
-    
-    
-
 
 def main(): #main loop
     
@@ -168,8 +150,6 @@ def main(): #main loop
     area = get_area(yvals, height)
     
     print (f'Area is {area} !')
-    
-
     
 if __name__ == "__main__":
     main()
