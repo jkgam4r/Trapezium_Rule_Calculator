@@ -1,7 +1,5 @@
 from trapezium_rule import get_x_vals, calculate_y_fx
 
-#for these tests I will use the known curve of x^3 + 3x^2 + 6x + 5 
-#between the ranges of -10 and 10 
 
 def test_calc_y_fx_valid1():
     assert calculate_y_fx([1,2,4,8], 2) == 32
@@ -12,7 +10,13 @@ def test_calc_y_fx_valid2():
 def test_calc_y_fx_valid3():
     assert calculate_y_fx([1,1,1], 1) == 3
     
-    
 def test_calc_y_fx_valid4():
-    assert calculate_y_fx([2,0,3], 5) == 53
+    assert calculate_y_fx([2,0,3], 5) == 53 #lots of tests for this func, complex
+    
+def test_calc_y_fx_valid5():
+    assert calculate_y_fx([1,1,2,1,1,4,5,6], 3) == 3567
+    
+def test_calc_y_fx_valid6():
+    assert calculate_y_fx([1,1,2,0,1,4,5,6], 3) == 3486
 #make tests here. this file will be for testing xval and yval coordinate calculating functions
+
