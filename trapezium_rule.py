@@ -98,7 +98,7 @@ def get_range(): #func must validate a and b, both floats with b > a
         except:
             print("Both input values must be numbers : eg 1.1, -3, 5.6")
     
-def get_x_vals(trapeziumsVal, rangeVal): #function that takes the number of trapeziums and range and returns a list of x values
+def get_x_vals(trapeziumsVal, rangeVal): #function that takes the number of trapeziums and range and returns a list of x values, corresponding points  
     height = (rangeVal[1] - rangeVal[0]) / trapeziumsVal
     n = trapeziumsVal + 1
       
@@ -110,13 +110,23 @@ def get_x_vals(trapeziumsVal, rangeVal): #function that takes the number of trap
     return x_vals
 
 
-def calculate_y_fx(formula, xval):
-    value = 0 #store temp y
-    order = len(formula) - 1 #get top x order
-    for i in range (0, order): #loop through all x terms
-        value += (formula[i] * (xval**(order-i))) #working!
-    value += formula[order] #add constant
-    return value
+
+def get_y_vals(xvals, coefficients):
+    
+    def calculate_y_fx(formula, xval): #takes polynomial in of ax^2 + bx + c as [a, b, c] 
+        value = 0 #store temp y
+        order = len(formula) - 1 #get top x order
+        for i in range (0, order): #loop through all x terms
+            value += (formula[i] * (xval**(order-i))) #working!
+        value += formula[order] #add constant
+        return value
+    
+    yvals = []
+    for x in xvals:
+        yvals.append(calculate_y_fx(coefficients, x)) #loops through xvals, finds y val and makes lst
+        
+    return yvals
+    
 
 
 def main(): #main loop
@@ -141,6 +151,10 @@ def main(): #main loop
     height = (rangeAB[1] - rangeAB[0]) / trapeziums #height between each x value
     
     x_vals = get_x_vals(trapeziums, rangeAB) #points that trapeziums are made
+    
+    yvals = get_y_vals(x_vals, coefficients) #calculates y values
+    
+    print (x_vals, yvals)
     
 
     
