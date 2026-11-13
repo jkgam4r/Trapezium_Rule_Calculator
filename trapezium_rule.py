@@ -109,23 +109,34 @@ def get_x_vals(trapeziumsVal, rangeVal): #function that takes the number of trap
         
     return x_vals
 
-
+def calculate_y_fx(formula, xval): #takes polynomial in of ax^2 + bx + c as [a, b, c] 
+    value = 0 #store temp y
+    order = len(formula) - 1 #get top x order
+    for i in range (0, order): #loop through all x terms
+        value += (formula[i] * (xval**(order-i))) #working!
+    value += formula[order] #add constant
+    return value
 
 def get_y_vals(xvals, coefficients):
-    
-    def calculate_y_fx(formula, xval): #takes polynomial in of ax^2 + bx + c as [a, b, c] 
-        value = 0 #store temp y
-        order = len(formula) - 1 #get top x order
-        for i in range (0, order): #loop through all x terms
-            value += (formula[i] * (xval**(order-i))) #working!
-        value += formula[order] #add constant
-        return value
     
     yvals = []
     for x in xvals:
         yvals.append(calculate_y_fx(coefficients, x)) #loops through xvals, finds y val and makes lst
         
     return yvals
+    
+def get_area(yvals, height):
+    area = 0
+    area += (yvals[0] + yvals[-1]) #sum of first and last value
+    del yvals[0]
+    del yvals[-1]
+    for val in yvals:
+        area += (2 * val) #2x of each y val between y1 and yn-1
+        
+    area = area * 0.5 * height
+    
+    return area
+    
     
 
 
@@ -154,7 +165,9 @@ def main(): #main loop
     
     yvals = get_y_vals(x_vals, coefficients) #calculates y values
     
-    print (x_vals, yvals)
+    area = get_area(yvals, height)
+    
+    print (f'Area is {area} !')
     
 
     
