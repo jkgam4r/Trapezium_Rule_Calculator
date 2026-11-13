@@ -1,4 +1,4 @@
-from trapezium_rule import get_x_vals, calculate_y_fx
+from trapezium_rule import calculate_y_fx
 
 
 def test_calc_y_fx_valid1():
