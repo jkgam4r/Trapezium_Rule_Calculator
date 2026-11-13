@@ -6,12 +6,12 @@ def test_check_order_valid():
 def test_check_order_invalid_str():
     assert check_order('s') == [False, 's']
     
-def test_get_order(monkeychart):
+def test_get_order(monkeypatch):
     inputs = iter(['f', 5])
-    monkeychart.setattr("builtins.input", lambda _: next(inputs) )
-    assert get_order() == [5]
+    monkeypatch.setattr("builtins.input", lambda _: next(inputs) )
+    assert get_order() == 5
 
-def test_get_order_2(monkeychart):
+def test_get_order_2(monkeypatch):
     inputs = iter(['f', '', 'ffff', 'rejectme', 5])
-    monkeychart.setattr("builtins.input", lambda _: next(inputs) )
-    assert get_order() == [5]
+    monkeypatch.setattr("builtins.input", lambda _: next(inputs) )
+    assert get_order() == 5
